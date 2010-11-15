@@ -1,3 +1,6 @@
 [submodule "app/plugins/wizard"]
 	path = app/plugins/wizard
 	url = https://github.com/jaredhoyt/cakephp-wizard.git
+[submodule "app/plugins/datasources"]
+	path = app/plugins/datasources
+	url = https://github.com/cakephp/datasources.git
