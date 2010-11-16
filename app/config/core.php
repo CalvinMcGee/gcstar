@@ -302,4 +302,4 @@
  */
 	Cache::config('default', array('engine' => 'File'));
 
-        Configure::read('config');
+        Configure::load('config');

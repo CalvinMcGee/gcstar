@@ -16,8 +16,13 @@ class ItemsController extends AppController {
         );
 
         function index() {
+            $title = __('Index', true);
             $data = $this->paginate('Item');
-            $this->set('data', $data);
+            $this->set(array(
+                'data' => $data,
+                'pageTitle' => $title . ' : ' . Configure::read('Settings.title'),
+                'title' => $title
+                ));
         }
 }
 ?>
