@@ -1,7 +1,11 @@
 <?php
 foreach ($data as $post) {
     foreach ($post['Item'] as $field => $value) {
-        echo $field.": ".$value."<br />\n";
+        if (file_exists(WWW_ROOT.'/img/'.$value) && $value != '') {
+            echo $this->Image->resize($value, 150, 150);
+        }
+        else
+            echo $field.": ".$value."<br />\n";
     }
 }
 
