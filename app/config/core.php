@@ -303,3 +303,5 @@
 	Cache::config('default', array('engine' => 'File'));
 
         Configure::load('config');
+
+        Configure::write('Config.language', Configure::read('Settings.language'));

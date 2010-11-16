@@ -1,0 +1,60 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2010-11-16 12:16+0100\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: /controllers/items_controller.php:19
+msgid "Index"
+msgstr ""
+
+#: /plugins/datasources/models/datasources/array_source.php:99
+msgid "No records found in model."
+msgstr ""
+
+#: /plugins/datasources/models/datasources/xmlrpc_source.php:138
+msgid "Transport error - could not open socket"
+msgstr ""
+
+#: /plugins/datasources/models/datasources/xmlrpc_source.php:141
+msgid "Transport error - HTTP status code was not 200"
+msgstr ""
+
+#: /plugins/datasources/models/datasources/xmlrpc_source.php:186
+msgid "Parse error. Not well formed"
+msgstr ""
+
+#: /plugins/wizard/controllers/components/wizard.php:208
+msgid "Process Callback not found. Please create Controller::%s"
+msgstr ""
+
+#: /plugins/wizard/controllers/components/wizard.php:240
+msgid "Step validation: %s is not a valid step."
+msgstr ""
+
+#: /views/items/index.ctp:9
+msgid "Previous"
+msgstr ""
+
+#: /views/items/index.ctp:10
+msgid "Next"
+msgstr ""
+
+#: /views/items/index.ctp:11
+msgid "Page %page% of %pages%"
+msgstr ""
+
+#: /webroot/test.php:88
+msgid "Debug setting does not allow access to this url."
+msgstr ""
+
