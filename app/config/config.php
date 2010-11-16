@@ -7,5 +7,6 @@ $config['Settings'] = array(
     'title' => 'GCstar',
     'language' => 'eng',
     'limit' => 25,
-    'theme' => 'default'
+    'theme' => 'default',
+    'fields' => array()
     );

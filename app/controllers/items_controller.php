@@ -7,7 +7,7 @@ class ItemsController extends AppController {
 
 	var $name = 'Items';
 //        $limit = Configure::read('Settings.limit');
-        var $helpers = array('Image');
+        var $helpers = array('Text', 'Image');
         
         var $paginate = array(
         'limit' => 25,
