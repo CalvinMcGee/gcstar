@@ -8,25 +8,28 @@
     <?php
         echo $this->Html->meta('icon');
 
-        echo $this->Html->css('cake.generic');
+        echo $this->Html->css(array('reset', '960'));
 
         echo $scripts_for_layout;
     ?>
 </head>
 <body>
-    <div id="container">
-        <div id="header">
+    <div class="container_12">
+        <div id="header" class="grid_12">
             <h1><?php echo $title; ?></h1>
         </div>
-        <div id="content">
+        <div class="clear"></div>
+        <div id="content" class="grid_12">
 
             <?php echo $this->Session->flash(); ?>
 
             <?php echo $content_for_layout; ?>
 
         </div>
-        <div id="footer">
+        <div class="clear"></div>
+        <div id="footer" class="grid_12">
         </div>
+        <div class="clear"></div>
     </div>
 </body>
 </html>
