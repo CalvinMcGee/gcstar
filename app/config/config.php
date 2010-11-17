@@ -8,5 +8,5 @@ $config = array(
     'language' => 'eng',
     'limit' => 25,
     'theme' => 'default',
-    'fields' => array()
+    'fields' => array('director', 'actors', 'genre', 'place', 'identifier')
     );
