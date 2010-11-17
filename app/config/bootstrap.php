@@ -48,3 +48,11 @@
  * Inflector::rules('plural', array('rules' => array(), 'irregular' => array(), 'uninflected' => array()));
  *
  */
+
+    Configure::load('config');
+
+    Configure::read('config');
+
+    define('LIMIT', Configure::read('limit'));
+
+    Configure::write('Config.language', Configure::read('language'));

@@ -6,11 +6,10 @@
 class ItemsController extends AppController {
 
 	var $name = 'Items';
-//        $limit = Configure::read('Settings.limit');
         var $helpers = array('Text', 'Image');
         
         var $paginate = array(
-        'limit' => 25,
+        'limit' => LIMIT,
         'order' => array(
             'Item.title' => 'asc'
             )
@@ -21,7 +20,7 @@ class ItemsController extends AppController {
             $data = $this->paginate('Item');
             $this->set(array(
                 'data' => $data,
-                'pageTitle' => $title . ' : ' . Configure::read('Settings.title'),
+                'pageTitle' => $title . ' : ' . Configure::read('title'),
                 'title' => $title
                 ));
         }

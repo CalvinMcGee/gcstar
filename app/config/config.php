@@ -3,7 +3,7 @@
 
  */
 
-$config['Settings'] = array(
+$config = array(
     'title' => 'GCstar',
     'language' => 'eng',
     'limit' => 25,
