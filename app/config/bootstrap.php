@@ -48,6 +48,40 @@
  * Inflector::rules('plural', array('rules' => array(), 'irregular' => array(), 'uninflected' => array()));
  *
  */
+/**
+ * Stores configs in APP/config/name.php
+ *
+ * usage:
+ *
+ *	$settings = Configure::read('Settings');
+ *	$settings['sitename'] = 'PizzaCake';
+ *	storeConfig('Settings', $settings, true);
+ *
+ */
+
+function storeConfig($name, $data = array(), $reload = false) {
+
+	$content = '';
+	if (!empty($data)) {
+		foreach ($data as $key => $value) {
+			$content .= sprintf("\$config['%s']['%s'] = %s;\n", $name, $key, var_export($value, true));
+		}
+	}
+
+	$content = "<?php\n".$content."?>";
+
+	App::import('core', 'File');
+	$name = strtolower($name);
+	$file = new File(CONFIGS.$name.'.php');
+	if ($file->open('w')) {
+		$file->append($content);
+	}
+	$file->close();
+
+	if ($reload) {
+		Configure::load($name);
+	}
+}
 
     Configure::load('config');
 

@@ -1,12 +1,12 @@
 <?php
 foreach ($data as $post) {
     echo "<div class=\"item\">\n";
-    foreach ($post['Item'] as $field => $value) {
-        if (file_exists(WWW_ROOT.'/img/'.$value) && $value != '') {
-            echo $this->Image->resize($value, 150, 150, true, null, false)."<br />\n";
+    foreach (Configure::read('fields') as $field) {
+        if (file_exists(WWW_ROOT.'/img/'.$post['Item'][$field]) && $post['Item'][$field] != '') {
+            echo $this->Image->resize($post['Item'][$field], 150, 150, true, null, false)."<br />\n";
         }
         else
-            echo $this->Text->autoLinkUrls($field.": ".$value."<br />\n", array(
+            echo $this->Text->autoLinkUrls($field.": ".$post['Item'][$field]."<br />\n", array(
                 'target' => '_blank'
             ));
     }
