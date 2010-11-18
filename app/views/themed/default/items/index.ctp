@@ -1,4 +1,5 @@
 <?php
+echo $this->element('tagcloud', array('data' => $tags));
 foreach ($data as $post) {
     echo "<div class=\"item clearfix\">\n";
 
