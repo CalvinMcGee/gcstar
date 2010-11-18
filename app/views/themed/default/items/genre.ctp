@@ -4,14 +4,14 @@ foreach ($data as $post) {
     echo "<div class=\"item clearfix\">\n";
 
     if (file_exists(WWW_ROOT.'/img/'.$post['Item']['image']) && $post['Item']['image'] != '') {
-        echo "<div class=\"grid_3 alpha\">\n".$this->Image->resize($post['Item']['image'], 220, 220, true, null, false)."</div>\n";
+        echo "<div class=\"grid_3 alpha\">\n".$this->Image->resize(trim($post['Item']['image']), 220, 220, true, null, false)."</div>\n";
     }
     echo "<div class=\"grid_9 omega\">\n<table>\n";
-    echo $this->Html->tableCells(array(array(array($this->Html->tag('h3', $post['Item']['title']), "colspan=\"2\""))))."\n";
+    echo $this->Html->tableCells(array(array(array($this->Html->tag('h3', trim($post['Item']['title'])), "colspan=\"2\""))))."\n";
 
     foreach (Configure::read('fields_list') as $field) {
         if ($field == 'actors') {
-            $a = actors($post['Item'][$field]);
+            $a = actors(trim($post['Item'][$field]));
             $i = 0;
             $content = '';
             foreach ($a as $actor => $role) {
@@ -25,19 +25,37 @@ foreach ($data as $post) {
             echo $this->Html->tableCells(array(__('Actors:', true), $content))."\n";
         }
         elseif ($field == 'genre') {
-            $g = preg_split("/[\s]*[,][\s]*/", $post['Item'][$field]);
+            $g = preg_split("/[\s]*[,][\s]*/", trim($post['Item'][$field]));
             $i = 0;
             $content = '';
             foreach ($g as $genre) {
-                $content .= $this->Html->link($genre, '/');
+                $content .= $this->Html->link($genre, array(
+                    'controller' => 'items', 'action' => 'genre', $genre
+                    ),
+                    array('escape' => false));
                 if ($i < (sizeof($g) - 1))
                     $content .= ", \n";
                 $i++;
             }
             echo $this->Html->tableCells(array(__('Genre:', true), $content))."\n";
         }
+        elseif ($field == 'director') {
+            $g = preg_split("/[\s]*[,][\s]*/", trim($post['Item'][$field]));
+            $i = 0;
+            $content = '';
+            foreach ($g as $director) {
+                $content .= $this->Html->link($director, array(
+                    'controller' => 'items', 'action' => 'director', $director
+                    ),
+                    array('escape' => false));
+                if ($i < (sizeof($g) - 1))
+                    $content .= ", \n";
+                $i++;
+            }
+            echo $this->Html->tableCells(array(__('Director:', true), $content))."\n";
+        }
         else
-            echo $this->Html->tableCells(array($field.':', $post['Item'][$field]))."\n";
+            echo $this->Html->tableCells(array($field.':', trim($post['Item'][$field])))."\n";
     }
     echo "</table>\n</div>\n";
     echo "</div>\n";
