@@ -61,26 +61,26 @@
 
 function storeConfig($name, $data = array(), $reload = false) {
 
-	$content = '';
-	if (!empty($data)) {
-		foreach ($data as $key => $value) {
-			$content .= sprintf("\$config['%s']['%s'] = %s;\n", $name, $key, var_export($value, true));
-		}
-	}
+    $content = '';
+    if (!empty($data)) {
+        foreach ($data as $key => $value) {
+            $content .= sprintf("\$config['%s'] = %s;\n", $key, var_export($value, true));
+        }
+    }
 
-	$content = "<?php\n".$content."?>";
+    $content = "<?php\n\n".$content;
 
-	App::import('core', 'File');
-	$name = strtolower($name);
-	$file = new File(CONFIGS.$name.'.php');
-	if ($file->open('w')) {
-		$file->append($content);
-	}
-	$file->close();
+    App::import('core', 'File');
+    $name = strtolower($name);
+    $file = new File(CONFIGS.$name.'.php');
+    if ($file->open('w')) {
+        $file->append($content);
+    }
+    $file->close();
 
-	if ($reload) {
-		Configure::load($name);
-	}
+    if ($reload) {
+        Configure::load($name);
+    }
 }
 
 /* Function for converting string 'Foo (bar), Bar1 (foo), Foo2 (bar 2),
