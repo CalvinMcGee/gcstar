@@ -8,7 +8,7 @@
     <?php
         echo $this->Html->meta('icon');
 
-        echo $this->Html->css(array('reset', '960'));
+        echo $this->Html->css(array('reset', '960', 'style'));
 
         echo $scripts_for_layout;
     ?>
