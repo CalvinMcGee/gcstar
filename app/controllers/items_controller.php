@@ -25,5 +25,27 @@ class ItemsController extends AppController {
                 'title' => $title
                 ));
         }
+
+        function genre($name = null) {
+            $title = $name;
+            $data = $this->paginate('Item', array('Item.genre LIKE' => '%'.$name.'%'));
+            $this->set(array(
+                'data' => $data,
+                'pageTitle' => $title . ' : ' . Configure::read('title'),
+                'tags' => $this->Item->find('all', array('fields' => 'Item.genre')),
+                'title' => $title
+                ));
+        }
+
+        function actor($name = null) {
+            $title = $name;
+            $data = $this->paginate('Item', array('Item.actors LIKE' => '%'.$name.'%'));
+            $this->set(array(
+                'data' => $data,
+                'pageTitle' => $title . ' : ' . Configure::read('title'),
+                'tags' => $this->Item->find('all', array('fields' => 'Item.genre')),
+                'title' => $title
+                ));
+        }
 }
 ?>
