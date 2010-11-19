@@ -47,7 +47,7 @@ foreach ($_tags as $tag => $t_i) {
 
 foreach ($tagcloud as $_tag => $s_i) {
     echo $this->Html->link($_tag,
-            array('controller' => 'items', 'action' => 'genre', $_tag),
+            array('controller' => 'items', 'action' => 'index', 'genre', $_tag),
             array(
                 'style' => 'font-size: '.$s_i.'%;')
             )."\n";

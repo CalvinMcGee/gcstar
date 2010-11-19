@@ -16,7 +16,7 @@ foreach ($data as $post) {
             $content = '';
             foreach ($a as $actor => $role) {
                 $content .= $this->Html->link($actor,
-                        array('controller' => 'items', 'action' => 'actor', $actor),
+                        array('controller' => 'items', 'action' => 'index', 'actor', $actor),
                         array('escape' => false));
                 if ($i < (sizeof($a) - 1))
                     $content .= ", \n";
@@ -30,7 +30,7 @@ foreach ($data as $post) {
             $content = '';
             foreach ($g as $genre) {
                 $content .= $this->Html->link($genre, array(
-                    'controller' => 'items', 'action' => 'genre', $genre
+                    'controller' => 'items', 'action' => 'index', 'genre', $genre
                     ),
                     array('escape' => false));
                 if ($i < (sizeof($g) - 1))
@@ -45,7 +45,7 @@ foreach ($data as $post) {
             $content = '';
             foreach ($g as $director) {
                 $content .= $this->Html->link($director, array(
-                    'controller' => 'items', 'action' => 'director', $director
+                    'controller' => 'items', 'action' => 'index', 'director', $director
                     ),
                     array('escape' => false));
                 if ($i < (sizeof($g) - 1))

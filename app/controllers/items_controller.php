@@ -15,42 +15,37 @@ class ItemsController extends AppController {
             )
         );
 
-        function index() {
-            $title = __('Index', true);
-            $data = $this->paginate('Item');
-            $this->set(array(
-                'data' => $data,
-                'pageTitle' => $title . ' : ' . Configure::read('title'),
-                'tags' => $this->Item->find('all', array('fields' => 'Item.genre')),
-                'title' => $title
-                ));
-        }
+        function index($category = null, $name = null) {
+            
+            switch ($category) {
+                
+                case 'actor':
+                    $title = $name;
+                    $data = $this->paginate('Item', array(
+                        'Item.actors LIKE' => '%'.$name.'%'
+                        ));
+                    break;
+                
+                case 'director':
+                    $title = $name;
+                    $data = $this->paginate('Item', array(
+                        'Item.director LIKE' => '%'.$name.'%'
+                        ));
+                    break;
+                
+                case 'genre':
+                    $title = $name;
+                    $data = $this->paginate('Item', array(
+                        'Item.genre LIKE' => '%'.$name.'%'
+                        ));
+                    break;
+                
+                default:
+                    $title = __('Index', true);
+                    $data = $this->paginate('Item');
+                    break;
+            }
 
-        function genre($name = null) {
-            $title = $name;
-            $data = $this->paginate('Item', array('Item.genre LIKE' => '%'.$name.'%'));
-            $this->set(array(
-                'data' => $data,
-                'pageTitle' => $title . ' : ' . Configure::read('title'),
-                'tags' => $this->Item->find('all', array('fields' => 'Item.genre')),
-                'title' => $title
-                ));
-        }
-
-        function actor($name = null) {
-            $title = $name;
-            $data = $this->paginate('Item', array('Item.actors LIKE' => '%'.$name.'%'));
-            $this->set(array(
-                'data' => $data,
-                'pageTitle' => $title . ' : ' . Configure::read('title'),
-                'tags' => $this->Item->find('all', array('fields' => 'Item.genre')),
-                'title' => $title
-                ));
-        }
-
-        function director($name = null) {
-            $title = $name;
-            $data = $this->paginate('Item', array('Item.director LIKE' => '%'.$name.'%'));
             $this->set(array(
                 'data' => $data,
                 'pageTitle' => $title . ' : ' . Configure::read('title'),
