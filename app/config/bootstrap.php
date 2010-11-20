@@ -59,12 +59,21 @@
  *
  */
 
+function languageCodes() {
+    $_a = array(
+        'eng' => 'English',
+        'swe' => 'Svenska'
+    );
+    return $_a;
+}
+
 function storeConfig($name, $data = array(), $reload = false) {
 
     $content = '';
     if (!empty($data)) {
-        foreach ($data as $key => $value) {
-            $content .= sprintf("\$config['%s'] = %s;\n", $key, var_export($value, true));
+        foreach ($data as $_step => $_array) {
+            foreach ($_array as $_key => $_value)
+                $content .= sprintf("\$config['%s']['%s'] = %s;\n", $_step, $_key, var_export($_value, true));
         }
     }
 

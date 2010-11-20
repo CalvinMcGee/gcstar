@@ -13,15 +13,19 @@ class SettingsController extends AppController {
         }
 
         function admin() {
-            $this->Setting->find('first', array(
-                'fields' => array('id', 'fields_list', 'language', 'limit', 'tagcloud_min_size', 'tagcloud_max_size', 'title', 'theme')
-            ));
+            $this->Setting->find('list');
 
             $folder = new Folder(APP.'locale');
             $content = $folder->read();
             unset($folder);
 
             $this->set(array('languages' => $content[0]));
+        }
+
+        function visual() {
+            require CONFIGS.'config.php';
+
+            $this->set(array('data' => $config, 'languages' => languageCodes()));
         }
 }
 ?>
