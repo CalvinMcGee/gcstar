@@ -24,3 +24,5 @@ $config['Visual']['tagcloud_min_size'] = '100';
 $config['Visual']['tagcloud_max_size'] = '300';
 $config['Visual']['title'] = 'GCstar';
 $config['Visual']['theme'] = 'default';
+$config['User']['username'] = 'admin';
+$config['User']['password'] = 'haveaday';

@@ -30,6 +30,12 @@ class Setting extends AppModel {
                     'required' => true,
                     'rule' => 'notEmpty'
                 )
+            ),
+            'username' => array(
+                'validateSettingUsername' => array(
+                    'required' => true,
+                    'rule' => 'alphaNumeric'
+                )
             )
         );
 }
