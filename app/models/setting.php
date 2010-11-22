@@ -27,7 +27,8 @@ class Setting extends AppModel {
             ),
             'title' => array(
                 'validateSettingTitle' => array(
-                    'required' => true
+                    'required' => true,
+                    'rule' => 'notEmpty'
                 )
             )
         );

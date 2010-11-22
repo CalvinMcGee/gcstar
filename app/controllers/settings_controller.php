@@ -7,25 +7,40 @@ class SettingsController extends AppController {
 
 	var $name = 'Settings';
 
-        function beforeFilter() {
-        $this->view = 'Theme';
-        $this->theme = 'default';
-        }
-
         function admin() {
             $this->Setting->find('list');
-
-            $folder = new Folder(APP.'locale');
-            $content = $folder->read();
-            unset($folder);
 
             $this->set(array('languages' => $content[0]));
         }
 
         function visual() {
+            $title = 'Visual settings';
+
             require CONFIGS.'config.php';
 
-            $this->set(array('data' => $config, 'languages' => languageCodes()));
+            $folder = new Folder(APP.'locale');
+            $content = $folder->read();
+            unset($folder);
+            $this->Setting->set($config);
+
+            $this->set(array('data' => $config, 'languages' => $content[0],
+                'title_for_layout' => $title . ' : ' . Configure::read('Visual.title'),
+                'title' => $title
+                ));
+
+            if (!empty($this->data)){
+                $this->Setting->set($this->data);
+
+                if ($this->Setting->validates()){
+                    foreach ($this->data as $model) {
+                        foreach ($model as $key => $value) {
+                            $config['Visual'][$key] = $value;
+                        }
+                    }
+                    
+                    storeConfig('config', $config);
+                }
+            }
         }
 }
 ?>
