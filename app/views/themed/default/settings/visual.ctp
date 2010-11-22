@@ -10,6 +10,10 @@ echo $this->Form->input('title', array(
     'default' => $data['Visual']['title'],
     'label' => __('The page title', true)
     ));
+echo $this->Form->input('theme', array('default' => $data['Visual']['theme'],
+    'label' => __('Theme', true),
+    'options' => $themes
+    ));
 echo $this->Form->input('language', array('default' => $data['Visual']['language'],
     'label' => __('Language', true),
     'options' => $options
