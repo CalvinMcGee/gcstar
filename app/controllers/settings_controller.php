@@ -13,6 +13,7 @@ class SettingsController extends AppController {
                 $this->Setting->set($this->data);
 
                 if ($this->Setting->validates()){
+                    require CONFIGS.'config.php';
                     foreach ($this->data as $model) {
                         foreach ($model as $key => $value) {
                             $config['Visual'][$key] = $value;
