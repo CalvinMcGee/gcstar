@@ -48,7 +48,7 @@ class ItemsController extends AppController {
 
             $this->set(array(
                 'data' => $data,
-                'pageTitle' => $title . ' : ' . Configure::read('title'),
+                'title_for_layout' => $title . ' : ' . Configure::read('Visual.title'),
                 'tags' => $this->Item->find('all', array('fields' => 'Item.genre')),
                 'title' => $title
                 ));

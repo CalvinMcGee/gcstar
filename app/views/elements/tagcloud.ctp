@@ -31,8 +31,8 @@ ksort($_tags);
  * t_max = max count
  */
 
-$min_size = Configure::read('tagcloud_min_size');
-$max_size = Configure::read('tagcloud_max_size');;
+$min_size = Configure::read('Visual.tagcloud_min_size');
+$max_size = Configure::read('Visual.tagcloud_max_size');;
 $t_min = min(array_values($_tags));
 $t_max = max(array_values($_tags));
 

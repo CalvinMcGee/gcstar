@@ -9,7 +9,7 @@ foreach ($data as $post) {
     echo "<div class=\"grid_9 omega\">\n<table>\n";
     echo $this->Html->tableCells(array(array(array($this->Html->tag('h3', trim($post['Item']['title'])), "colspan=\"2\""))))."\n";
 
-    foreach (Configure::read('fields_list') as $field) {
+    foreach (Configure::read('Visual.fields_list') as $field) {
         if ($field == 'actors') {
             $a = actors(trim($post['Item'][$field]));
             $i = 0;

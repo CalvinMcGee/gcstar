@@ -59,12 +59,12 @@
  *
  */
 
-function languageCodes() {
-    $_a = array(
+function languageCodes($_a) {
+    $_b = array(
         'eng' => 'English',
         'swe' => 'Svenska'
     );
-    return $_a;
+    return $_b[$_a];
 }
 
 function storeConfig($name, $data = array(), $reload = false) {
@@ -139,6 +139,6 @@ function actors($s) {
 
     Configure::read('config');
 
-    define('LIMIT', Configure::read('limit'));
+    define('LIMIT', Configure::read('Visual.limit'));
 
-    Configure::write('Config.language', Configure::read('language'));
+    Configure::write('Config.language', Configure::read('Visual.language'));
