@@ -16,7 +16,8 @@ echo $this->Form->input('theme', array('default' => $data['Visual']['theme'],
     ));
 echo $this->Form->input('language', array('default' => $data['Visual']['language'],
     'label' => __('Language', true),
-    'options' => $options
+    'options' => $options,
+    'type' => 'radio'
     ));
 echo $this->Form->input('limit', array(
     'error' => array(

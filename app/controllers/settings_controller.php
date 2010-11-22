@@ -8,6 +8,21 @@ class SettingsController extends AppController {
 	var $name = 'Settings';
 
         function visual() {
+
+            if (!empty($this->data)){
+                $this->Setting->set($this->data);
+
+                if ($this->Setting->validates()){
+                    foreach ($this->data as $model) {
+                        foreach ($model as $key => $value) {
+                            $config['Visual'][$key] = $value;
+                        }
+                    }
+
+                    storeConfig('config', $config);
+                }
+            }
+            
             $title = 'Visual settings';
 
             require CONFIGS.'config.php';
@@ -30,20 +45,6 @@ class SettingsController extends AppController {
                 'title_for_layout' => $title . ' : ' . Configure::read('Visual.title'),
                 'title' => $title
                 ));
-
-            if (!empty($this->data)){
-                $this->Setting->set($this->data);
-
-                if ($this->Setting->validates()){
-                    foreach ($this->data as $model) {
-                        foreach ($model as $key => $value) {
-                            $config['Visual'][$key] = $value;
-                        }
-                    }
-                    
-                    storeConfig('config', $config);
-                }
-            }
         }
 }
 ?>
