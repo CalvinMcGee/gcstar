@@ -13,9 +13,12 @@ foreach ($data as $post) {
     if (file_exists(WWW_ROOT.'/img/'.$post['Item']['image']) && $post['Item']['image'] != '') {
         echo "<div class=\"grid_3 alpha\">\n".$this->Image->resize(trim($post['Item']['image']), 220, 220, true, null, false)."</div>\n";
     }
-    echo "<div class=\"grid_9 omega\">\n<table>\n";
-    echo $this->Html->tableCells(array(array(array($this->Html->tag('h3', trim($post['Item']['title'])), "colspan=\"2\""))))."\n";
-
+    echo "<div class=\"grid_9 omega\">\n";
+    echo $this->Html->link($this->Html->tag('h3', trim($post['Item']['title']), array('escape' => false)),
+            array('controller' => 'items', 'action' => 'item', trim($post['Item']['title'])),
+            array('escape' => false)
+            )."\n";
+    echo "<table>\n";
     foreach (Configure::read('Visual.fields_list') as $field) {
         if ($field == 'actors') {
             $a = actors(trim($post['Item'][$field]));
@@ -60,6 +63,13 @@ foreach ($data as $post) {
                 $i++;
             }
             echo $this->Html->tableCells(array(__('Director:', true), $content))."\n";
+        }
+        elseif ($field == 'webPage') {
+            echo $this->Html->tableCells(array('',
+                $this->Html->link(__('Link', true), trim($post['Item'][$field]),
+                        array('escape' => false, 'target' => '_blank')
+                        )
+                ))."\n";
         }
         else
             echo $this->Html->tableCells(array($field.':', trim($post['Item'][$field])))."\n";

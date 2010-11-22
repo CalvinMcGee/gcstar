@@ -80,5 +80,18 @@ class ItemsController extends AppController {
                 'years' => $this->Item->find('all', array('fields' => 'Item.date'))
                 ));
         }
+
+        function item ($name = null) {
+            $title = $name;
+            $data = $this->paginate('Item', array(
+                'Item.title LIKE' => '%'.$name.'%'
+                ));
+
+            $this->set(array(
+                'data' => $data,
+                'title_for_layout' => $title . ' : ' . Configure::read('Visual.title'),
+                'title' => $title
+                ));
+        }
 }
 ?>
