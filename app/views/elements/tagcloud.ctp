@@ -1,8 +1,9 @@
 <?php
+$_key = '';
 $_tags = array();
 foreach ($data as $post) {
     foreach ($post as $model) {
-        foreach ($model as $key => $value){
+        foreach ($model as $_key => $value){
             /**
              * Tags are comma separated.
              */
@@ -46,8 +47,8 @@ foreach ($_tags as $tag => $t_i) {
 }
 
 foreach ($tagcloud as $_tag => $s_i) {
-    echo $this->Html->link($_tag,
-            array('controller' => 'items', 'action' => 'index', 'genre', $_tag),
+    echo $this->Html->link(trim($_tag),
+            array('controller' => 'items', 'action' => 'index', $_key, trim($_tag)),
             array(
                 'style' => 'font-size: '.$s_i.'%;')
             )."\n";

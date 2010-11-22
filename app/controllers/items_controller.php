@@ -25,6 +25,13 @@ class ItemsController extends AppController {
                         'Item.actors LIKE' => '%'.$name.'%'
                         ));
                     break;
+
+                case 'country':
+                    $title = $name;
+                    $data = $this->paginate('Item', array(
+                        'Item.country LIKE' => '%'.$name.'%'
+                        ));
+                    break;
                 
                 case 'director':
                     $title = $name;
@@ -39,6 +46,13 @@ class ItemsController extends AppController {
                         'Item.genre LIKE' => '%'.$name.'%'
                         ));
                     break;
+
+                case 'date':
+                    $title = $name;
+                    $data = $this->paginate('Item', array(
+                        'Item.date LIKE' => '%'.$name.'%'
+                        ));
+                    break;
                 
                 default:
                     $title = __('Index', true);
@@ -51,6 +65,19 @@ class ItemsController extends AppController {
                 'title_for_layout' => $title . ' : ' . Configure::read('Visual.title'),
                 'tags' => $this->Item->find('all', array('fields' => 'Item.genre')),
                 'title' => $title
+                ));
+        }
+
+        function cloud($category = null, $name = null) {
+            $title = 'Cloud';
+            $this->set(array(
+                'title_for_layout' => $title . ' : ' . Configure::read('Visual.title'),
+                'actors' => $this->Item->find('all', array('fields' => 'Item.actors')),
+                'countries' => $this->Item->find('all', array('fields' => 'Item.country')),
+                'directors' => $this->Item->find('all', array('fields' => 'Item.director')),
+                'genres' => $this->Item->find('all', array('fields' => 'Item.genre')),
+                'title' => $title,
+                'years' => $this->Item->find('all', array('fields' => 'Item.date'))
                 ));
         }
 }

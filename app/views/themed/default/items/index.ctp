@@ -1,5 +1,12 @@
 <?php
-echo $this->element('tagcloud', array('data' => $tags));
+echo $this->Html->div('tagcloud', $this->element('tagcloud', array('data' => $tags, 'escape' => true)))."\n";
+
+echo $this->Html->div('paginationlinks', $paginator->numbers()."<br />\n".
+        $paginator->prev('<< '.__('Previous', true).' ')."\n".
+        $paginator->next(' '.__('Next', true).' >>')."<br />\n".
+        $paginator->counter(array('format' => '<span>'.__('Page %page% of %pages%', true).'</span>'))."\n"
+        )."\n";
+
 foreach ($data as $post) {
     echo "<div class=\"item clearfix\">\n";
 
@@ -61,8 +68,9 @@ foreach ($data as $post) {
     echo "</div>\n";
 }
 
-echo $paginator->numbers()."<br />\n";
-echo $paginator->prev('<< '.__('Previous', true).' ');
-echo $paginator->next(' '.__('Next', true).' >>')."<br />";
-echo $paginator->counter(array('format' => __('Page %page% of %pages%', true)));
+echo $this->Html->div('paginationlinks', $paginator->numbers()."<br />\n".
+        $paginator->prev('<< '.__('Previous', true).' ')."\n".
+        $paginator->next(' '.__('Next', true).' >>')."<br />\n".
+        $paginator->counter(array('format' => '<span>'.__('Page %page% of %pages%', true).'</span>'))."\n"
+        )."\n";
 ?>
