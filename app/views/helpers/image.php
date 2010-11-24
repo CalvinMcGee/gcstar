@@ -8,7 +8,7 @@ class ImageHelper extends Helper {
 /**
  * Automatically resizes an image and returns formatted IMG tag
  *
- * @param string $path Path to the image file, relative to the webroot/img/ directory.
+ * @param string $path Path to the image file, relative to the app/ directory.
  * @param integer $width Image of returned image
  * @param integer $height Height of returned image
  * @param boolean $aspect Maintain aspect ratio (default: true)
@@ -21,7 +21,7 @@ class ImageHelper extends Helper {
 
         $types = array(1 => "gif", "jpeg", "png", "swf", "psd", "wbmp"); // used to determine image type
 
-        $fullpath = ROOT.DS.APP_DIR.DS.WEBROOT_DIR.DS.'img/';
+        $fullpath = ROOT.DS.APP_DIR.DS;
 
         $url = $fullpath.$path;
 
@@ -37,7 +37,7 @@ class ImageHelper extends Helper {
 
 
         $relfile = $this->webroot.'img/'.$this->cacheDir.'/'.$width.'x'.$height.'_'.basename($path); // relative file
-        $cachefile = $fullpath.$this->cacheDir.DS.$width.'x'.$height.'_'.basename($path);  // location on server
+        $cachefile = $fullpath.'webroot/img/'.$this->cacheDir.DS.$width.'x'.$height.'_'.basename($path);  // location on server
 
         if (file_exists($cachefile)) {
             $csize = getimagesize($cachefile);
