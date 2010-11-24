@@ -108,7 +108,7 @@ class SettingsController extends AppController {
                                 }
                             }
 
-                            $_a[$key] = $_actors;
+                            $_a[strtolower($key)] = $_actors;
                             break;
 
                         case 'comment':
@@ -135,6 +135,8 @@ class SettingsController extends AppController {
                                     $_genres .= $_post[$key]['Line']['col'];
                             }
 
+                            $_a[strtolower($key)] = $_comments;
+                            
                         case 'Genre':
                             $_genres = '';
 
@@ -159,14 +161,14 @@ class SettingsController extends AppController {
                                     $_genres .= $_post[$key]['Line']['col'];
                             }
 
-                            $_a[$key] = $_genres;
+                            $_a[strtolower($key)] = $_genres;
                             break;
                             
                         default :
                             if (!empty($value))
-                                $_a[$key] = trim($value);
+                                $_a[strtolower($key)] = trim($value);
                             else
-                                $_a[$key] = $value;
+                                $_a[strtolower($key)] = $value;
                             break;
                         
                     }

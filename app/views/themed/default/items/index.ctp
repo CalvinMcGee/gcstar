@@ -65,7 +65,7 @@ foreach ($data as $post) {
             }
             echo $this->Html->tableCells(array(__('Director:', true), $content))."\n";
         }
-        elseif ($field == 'webPage') {
+        elseif ($field == 'webpage') {
             echo $this->Html->tableCells(array('',
                 $this->Html->link(__('Link', true), trim($post['Item'][$field]),
                         array('escape' => false, 'target' => '_blank')

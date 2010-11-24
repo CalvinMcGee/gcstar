@@ -7,7 +7,7 @@ $config['Visual']['fields_list'] = array (
   3 => 'place',
   4 => 'identifier',
   5 => 'time',
-  6 => 'webPage',
+  6 => 'webpage',
 );
 $config['Visual']['fields_full'] = array (
   0 => 'director',
@@ -16,7 +16,7 @@ $config['Visual']['fields_full'] = array (
   3 => 'place',
   4 => 'identifier',
   5 => 'time',
-  6 => 'webPage',
+  6 => 'webpage',
 );
 $config['Visual']['language'] = 'eng';
 $config['Visual']['limit'] = '25';
@@ -26,3 +26,4 @@ $config['Visual']['title'] = 'GCstar';
 $config['Visual']['theme'] = 'default';
 $config['User']['username'] = 'admin';
 $config['User']['password'] = 'haveaday';
+$config['Setting']['source_file'] = 'Filmer.gcs';
