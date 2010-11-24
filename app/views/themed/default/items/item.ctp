@@ -1,3 +1,4 @@
+<h2><?php echo $title; ?></h2>
 <?php
 echo "<div class=\"item clearfix\">\n";
 echo "<div class=\"grid_8 alpha\">\n";

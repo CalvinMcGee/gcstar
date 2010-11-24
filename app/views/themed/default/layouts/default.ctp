@@ -16,7 +16,7 @@
 <body>
     <div class="container_12">
         <div id="header" class="grid_12">
-            <h1><?php echo $title; ?></h1>
+            <h1><?php echo Configure::read('Visual.title') ?></h1>
         </div>
         <div class="clear"></div>
         <div id="content" class="grid_12">

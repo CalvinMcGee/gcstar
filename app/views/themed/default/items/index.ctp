@@ -1,3 +1,4 @@
+<h2><?php echo $title; ?></h2>
 <?php
 echo $this->Html->div('tagcloud', $this->element('tagcloud', array('data' => $tags, 'escape' => true)))."\n";
 

@@ -1,3 +1,4 @@
+<h2><?php echo $title; ?></h2>
 <?php
 echo $this->Html->div('tagcloud',
         $this->Html->tag('h2', __('Genres', true), array('escape' => true)).

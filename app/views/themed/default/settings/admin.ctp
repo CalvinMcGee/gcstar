@@ -1,3 +1,4 @@
+<h2><?php echo $title; ?></h2>
 <?php
 echo $this->Form->create('Setting');
 echo $this->Form->input('username', array(
