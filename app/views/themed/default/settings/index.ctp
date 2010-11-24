@@ -1,4 +1,6 @@
+<h2><?php echo $title; ?></h2>
 <?php
+echo $this->Html->link(__('Update database', true), array('action' => 'xml'));
 foreach ($languages as $language)
     $options[$language] = languageCodes($language);
 

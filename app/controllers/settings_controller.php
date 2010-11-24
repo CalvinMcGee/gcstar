@@ -21,8 +21,8 @@ class SettingsController extends AppController {
             );
             $this->Security->requireLogin();
         }
-
-        function visual() {
+        
+        function index() {
 
             if (!empty($this->data)){
                 $this->Setting->set($this->data);
@@ -74,6 +74,112 @@ class SettingsController extends AppController {
                 'title_for_layout' => $title . ' : ' . Configure::read('Visual.title'),
                 'title' => $title
                 ));
+        }
+
+        function xml() {
+            App::import(array('Xml'));
+            $_xml = new Xml(IMAGES.Configure::read('Setting.source_file'));
+            $__xml = Set::reverse($_xml);
+
+            $_data['Item'] = array();
+
+            foreach ($__xml['Collection']['Item'] as $_post) {
+                $_a = array();
+
+                foreach ($_post as $key => $value) {
+
+                    switch ($key) {
+
+                        case 'Actors':
+                            $_actors = '';
+
+                            if (!empty($_post[$key]['Line'])) {
+                                $_i = 0;
+                                $_len = count($_post[$key]['Line']);
+
+                                foreach ($_post[$key]['Line'] as $_actor) {
+
+                                    if (!empty($_actor['Col'][0])){
+                                        $_actors .= $_actor['Col'][0];
+                                        if ($_i < ($_len - 1))
+                                            $_actors .= ', ';
+                                        }
+                                        $_i++;
+                                }
+                            }
+
+                            $_a[$key] = $_actors;
+                            break;
+
+                        case 'comment':
+                            $_comments = '';
+
+                            if (!empty($_post[$key]['Line'])) {
+
+                                if (!empty($_post[$key]['Line'][0])) {
+                                    $_i = 0;
+                                    $_len = count($_post[$key]['Line']);
+
+                                    foreach ($_post[$key]['Line'] as $_comment) {
+
+                                        if (!empty($_comment['col'])) {
+                                            $_genres .= $_comment['col'];
+                                            if ($_i < ($_len - 1))
+                                                $_comments .= ', ';
+                                        }
+                                        $_i++;
+
+                                    }
+                                }
+                                else
+                                    $_genres .= $_post[$key]['Line']['col'];
+                            }
+
+                        case 'Genre':
+                            $_genres = '';
+
+                            if (!empty($_post[$key]['Line'])) {
+
+                                if (!empty($_post[$key]['Line'][0])) {
+                                    $_i = 0;
+                                    $_len = count($_post[$key]['Line']);
+
+                                    foreach ($_post[$key]['Line'] as $_genre) {
+
+                                        if (!empty($_genre['col'])) {
+                                            $_genres .= $_genre['col'];
+                                            if ($_i < ($_len - 1))
+                                                $_genres .= ', ';
+                                        }
+                                        $_i++;
+
+                                    }
+                                }
+                                else
+                                    $_genres .= $_post[$key]['Line']['col'];
+                            }
+
+                            $_a[$key] = $_genres;
+                            break;
+                            
+                        default :
+                            if (!empty($value))
+                                $_a[$key] = trim($value);
+                            else
+                                $_a[$key] = $value;
+                            break;
+                        
+                    }
+                    
+                }
+                $_data['Item'][] = $_a;
+            }
+            $this->loadModel('Item');
+            $this->Item->query('DELETE FROM items WHERE 1=1');
+            $this->Item->saveAll($_data['Item']);
+
+            $this->Session->setFlash(__('Database has been updated', true));
+            $this->redirect(array('action' => 'index'));
         }
 }
 ?>
