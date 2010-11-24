@@ -92,49 +92,6 @@ function storeConfig($name, $data = array(), $reload = false) {
     }
 }
 
-/* Function for converting string 'Foo (bar), Bar1 (foo), Foo2 (bar 2),
- * Foo3 (bar (abc 123) 3)' to
- * array('Foo' => 'bar', 'Bar1' => 'foo','Foo2' => 'bar 2', 'Foo3' => 'bar (abc 123) 3')
- */
-function actors($s) {
-
-    $data = array();
-    $count = 0;
-    $tmp = "";
-
-    for ($i = 0; $i < strlen($s); $i++)
-    {
-     if ($s[$i] == "(")
-     {
-       if ($count++ == 0)
-       {
-         $tmp = trim($tmp, ', ');
-         $data[$tmp] = "";
-         $ref = &$data[$tmp];
-         $tmp = "";
-       }
-       else
-         $tmp .= $s[$i];
-     }
-     else if ($s[$i] == ")")
-     {
-       if (--$count == 0)
-       {
-         $ref = $tmp;
-         $tmp = "";
-       }
-       else
-         $tmp .= $s[$i];
-     }
-     else
-     {
-       $tmp .= $s[$i];
-     }
-    }
-
-    return $data;
-}
-
     Configure::load('config');
 
     Configure::read('config');

@@ -28,14 +28,15 @@ else
     echo "<table>\n";
     foreach (Configure::read('Visual.fields_list') as $field) {
         if ($field == 'actors') {
-            $a = actors(trim($post['Item'][$field]));
+            $g = preg_split("/[\s]*[,][\s]*/", trim($data[0]['Item'][$field]));
             $i = 0;
             $content = '';
-            foreach ($a as $actor => $role) {
-                $content .= $this->Html->link($actor,
-                        array('controller' => 'items', 'action' => 'index', 'actor', $actor),
-                        array('escape' => false));
-                if ($i < (sizeof($a) - 1))
+            foreach ($g as $actor) {
+                $content .= $this->Html->link($actor, array(
+                    'controller' => 'items', 'action' => 'index', 'actor', $actor
+                    ),
+                    array('escape' => false));
+                if ($i < (sizeof($g) - 1))
                     $content .= ", \n";
                 $i++;
             }
