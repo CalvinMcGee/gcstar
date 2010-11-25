@@ -1,7 +1,7 @@
 <h2><?php echo $title; ?></h2>
 <?php
 echo "<div class=\"item clearfix\">\n";
-echo "<div class=\"grid_8 alpha\">\n";
+echo "<div class=\"grid_7 alpha\">\n";
 
 echo $this->Html->tag('h3', trim($data[0]['Item']['title']))."\n";
 echo $this->Html->para(null, trim($data[0]['Item']['synopsis']));

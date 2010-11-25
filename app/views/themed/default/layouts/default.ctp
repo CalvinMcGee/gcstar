@@ -25,10 +25,17 @@
         </div>
         <div class="clear"></div>
         <div id="content" class="grid_12">
-
+            <div class="grid_2 alpha">
+                <?php
+                    echo $this->Paginator->sort(__('Sort by added', true), 'added')."\n";
+                    echo $this->Paginator->sort(__('Sort by year of publication', true), 'year')."\n";
+                ?>
+            </div>
+            <div class="grid_10 omega">
             <?php echo $this->Session->flash(); ?>
 
             <?php echo $content_for_layout; ?>
+            </div>
 
         </div>
         <div class="clear"></div>

@@ -12,7 +12,7 @@ class ItemsController extends AppController {
         var $paginate = array(
         'limit' => LIMIT,
         'order' => array(
-            'Item.title' => 'asc'
+            'Item.added' => 'desc'
             )
         );
 
