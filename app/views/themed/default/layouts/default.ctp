@@ -8,6 +8,11 @@
     <?php
         echo $this->Html->meta('icon');
 
+        echo $this->Html->meta(__('Most Recent Items', true), array(
+            'controller' => 'items',
+            'action' => 'feed'.'.rss'
+            ), array('type' => 'rss'));
+
         echo $this->Html->css(array('reset', '960', 'style'));
 
         echo $scripts_for_layout;

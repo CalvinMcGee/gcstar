@@ -22,14 +22,15 @@ foreach ($data as $post) {
     $bodyText = preg_replace('=\(.*?\)=is', '', $post['Item']['synopsis']);
     $bodyText = $text->stripLinks($bodyText);
     $bodyText = Sanitize::stripAll($bodyText);
-    $bodyText = $text->truncate($bodyText, 400, '...', true, true);
+    $bodyText = $text->truncate($bodyText, 400);
+//    $bodyText = $html->resize('webroot/files/'.$post['Item']['image'], 120, 120, true, null, false).$bodyText;
 
-    echo  $this->Rss->item(array(), array(
+    echo $this->Rss->item(array(), array(
         'title' => $post['Item']['title'],
         'link' => $postLink,
         'guid' => array('url' => $postLink, 'isPermaLink' => 'true'),
         'description' =>  $bodyText,
         'dc:creator' => 'Joachim',
-        'pubDate' => $postTime));
+        'pubDate' => $postTime))."\n";
 }
 ?>
