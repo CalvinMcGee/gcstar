@@ -28,16 +28,19 @@ class SettingsController extends AppController {
             if (!empty($this->data)){
                 $this->Setting->set($this->data);
 
-                if ($this->Setting->validates()){
+                if ($this->Setting->validates(array('fieldList' => array(
+                    'title', 'theme', 'language', 'limit', 'tagcloud_min_size',
+                    'tagcloud_max_size')))){
                     require CONFIGS.'config.php';
-                    foreach ($this->data as $model) {
-                        foreach ($model as $key => $value) {
-                            $config['Visual'][$key] = $value;
-                        }
+                    foreach ($this->data['Setting'] as $key => $value) {
+                        $config['Visual'][$key] = $value;
                     }
 
                     storeConfig('config', $config);
+                    $this->Session->setFlash(__('Configuration saved', true));
                 }
+                else
+                    $this->Session->setFlash(__('Could not save configuration', true));
             }
             
             $title = 'Visual settings';

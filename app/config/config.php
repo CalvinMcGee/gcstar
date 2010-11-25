@@ -1,5 +1,9 @@
 <?php
 
+$config['Setting']['source_file'] = 'Filmer.gcs';
+$config['Setting']['installed'] = true;
+$config['User']['username'] = 'admin';
+$config['User']['password'] = 'haveaday';
 $config['Visual']['fields_list'] = array (
   0 => 'director',
   1 => 'actors',
@@ -19,11 +23,8 @@ $config['Visual']['fields_full'] = array (
   6 => 'webpage',
 );
 $config['Visual']['language'] = 'eng';
-$config['Visual']['limit'] = '25';
+$config['Visual']['limit'] = '20';
 $config['Visual']['tagcloud_min_size'] = '100';
 $config['Visual']['tagcloud_max_size'] = '300';
 $config['Visual']['title'] = 'GCstar';
 $config['Visual']['theme'] = 'default';
-$config['User']['username'] = 'admin';
-$config['User']['password'] = 'haveaday';
-$config['Setting']['source_file'] = 'Filmer.gcs';
