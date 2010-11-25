@@ -7,6 +7,7 @@ class SettingsController extends AppController {
 
 	var $name = 'Settings';
         var $components = array('Security', 'Session', 'Cookie');
+        var $helpers = array('Time');
 
         function beforeFilter() {
             $this->view = 'Theme';
@@ -78,7 +79,7 @@ class SettingsController extends AppController {
 
         function xml() {
             App::import(array('Xml'));
-            $_xml = new Xml(IMAGES.Configure::read('Setting.source_file'));
+            $_xml = new Xml(WWW_ROOT.'files'.DS.Configure::read('Setting.source_file'));
             $__xml = Set::reverse($_xml);
 
             $_data['Item'] = array();
@@ -163,6 +164,13 @@ class SettingsController extends AppController {
 
                             $_a[strtolower($key)] = $_genres;
                             break;
+
+                        case 'added' :
+                            if (!empty($value))
+                                $_a[strtolower($key)] = date( 'y-m-d', strtotime( trim($value) ));
+                            else
+                                $_a[strtolower($key)] = $value;
+                            break;
                             
                         default :
                             if (!empty($value))
@@ -174,6 +182,7 @@ class SettingsController extends AppController {
                     }
                     
                 }
+                $_a['slug'] = Inflector::slug(strtolower($_a['title']));
                 $_data['Item'][] = $_a;
             }
             $this->loadModel('Item');

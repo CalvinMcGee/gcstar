@@ -22,7 +22,7 @@ else
 
     echo "<div class=\"grid_9 omega\">\n";
     echo $this->Html->link($this->Html->tag('h3', trim($post['Item']['title']), array('escape' => false)),
-            array('controller' => 'items', 'action' => 'item', trim($post['Item']['title'])),
+            array('controller' => 'items', 'action' => 'item', trim($post['Item']['slug'])),
             array('escape' => false)
             )."\n";
     echo "<table>\n";

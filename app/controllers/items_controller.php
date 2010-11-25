@@ -7,6 +7,7 @@ class ItemsController extends AppController {
 
 	var $name = 'Items';
         var $helpers = array('Text', 'Image');
+        var $components = array('RequestHandler');
         
         var $paginate = array(
         'limit' => LIMIT,
@@ -16,9 +17,9 @@ class ItemsController extends AppController {
         );
 
         function index($category = null, $name = null) {
-            
+
             switch ($category) {
-                
+
                 case 'actor':
                     $title = $name;
                     $data = $this->paginate('Item', array(
@@ -32,14 +33,14 @@ class ItemsController extends AppController {
                         'Item.country LIKE' => '%'.$name.'%'
                         ));
                     break;
-                
+
                 case 'director':
                     $title = $name;
                     $data = $this->paginate('Item', array(
                         'Item.director LIKE' => '%'.$name.'%'
                         ));
                     break;
-                
+
                 case 'genre':
                     $title = $name;
                     $data = $this->paginate('Item', array(
@@ -53,7 +54,7 @@ class ItemsController extends AppController {
                         'Item.date LIKE' => '%'.$name.'%'
                         ));
                     break;
-                
+
                 default:
                     $title = __('Index', true);
                     $data = $this->paginate('Item');
@@ -81,10 +82,10 @@ class ItemsController extends AppController {
                 ));
         }
 
-        function item ($name = null) {
-            $title = $name;
+        function item ($slug = null) {
+            $title = $slug;
             $data = $this->paginate('Item', array(
-                'Item.title LIKE' => '%'.$name.'%'
+                'Item.slug LIKE' => $slug
                 ));
 
             $this->set(array(
@@ -92,6 +93,13 @@ class ItemsController extends AppController {
                 'title_for_layout' => $title . ' : ' . Configure::read('Visual.title'),
                 'title' => $title
                 ));
+        }
+
+        function feed() {
+            if( $this->RequestHandler->isRss() ){
+                $data = $this->Item->find('all', array('limit' => 20, 'order' => 'Item.added DESC'));
+                $this->set(compact('data'));
+            }
         }
 }
 ?>
