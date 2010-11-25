@@ -67,6 +67,8 @@ class ImageHelper extends Helper {
             imagedestroy ($temp);
         }
 
+//        return $this->Html->image($relfile, $htmlAttributes, $return);
+
         return $this->output(sprintf($this->Html->tags['image'], $relfile, $htmlAttributes, $return));
     }
 }

@@ -67,8 +67,8 @@ echo "</div>\n";
 
 echo "<div class=\"grid_3 omega\">\n";
 
-if (file_exists(WWW_ROOT.'/img/'.$data[0]['Item']['image']) && $data[0]['Item']['image'] != '')
-    echo $this->Image->resize('webroot/img/'.trim($data[0]['Item']['image']), 300, 300, true, null, false);
+if (file_exists(WWW_ROOT.'/files/'.$data[0]['Item']['image']) && $data[0]['Item']['image'] != '')
+    echo $this->Image->resize('webroot/files/'.trim($data[0]['Item']['image']), 300, 300, true, null, false);
 else
     echo $this->Image->resize('views/themed/'.Configure::read('Visual.theme').'/webroot/img/nocover.gif', 300, 300, true, null, false);
 

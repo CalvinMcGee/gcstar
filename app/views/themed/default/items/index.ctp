@@ -13,8 +13,8 @@ foreach ($data as $post) {
 
     echo "<div class=\"grid_3 omega\">\n";
 
-if (file_exists(WWW_ROOT.'/img/'.$post['Item']['image']) && $post['Item']['image'] != '')
-    echo $this->Image->resize('webroot/img/'.trim($post['Item']['image']), 220, 220, true, null, false);
+if (file_exists(WWW_ROOT.'/files/'.$post['Item']['image']) && $post['Item']['image'] != '')
+    echo $this->Image->resize('webroot/files/'.trim($post['Item']['image']), 220, 220, true, null, false);
 else
     echo $this->Image->resize('views/themed/'.Configure::read('Visual.theme').'/webroot/img/nocover.gif', 220, 220, true, null, false);
 
