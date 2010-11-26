@@ -6,7 +6,7 @@
 class ItemsController extends AppController {
 
 	var $name = 'Items';
-        var $helpers = array('Text', 'Image');
+        var $helpers = array('Text', 'Image', 'Js');
         var $components = array('RequestHandler');
         
         var $paginate = array(
@@ -17,6 +17,7 @@ class ItemsController extends AppController {
         );
 
         function index($category = null, $name = null) {
+            $this->layout = 'items';
 
             switch ($category) {
 
@@ -67,6 +68,9 @@ class ItemsController extends AppController {
                 'tags' => $this->Item->find('all', array('fields' => 'Item.genre')),
                 'title' => $title
                 ));
+            if ($this->RequestHandler->isAjax()) {
+                $this->autoLayout = false;
+            }
         }
 
         function cloud($category = null, $name = null) {

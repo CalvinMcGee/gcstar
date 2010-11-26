@@ -1,13 +1,18 @@
 <h2><?php echo $title; ?></h2>
 <?php
-echo $this->Html->div('tagcloud', $this->element('tagcloud', array('data' => $tags, 'escape' => true)))."\n";
+echo $this->Html->div('tagcloud', $this->element('tagcloud', array('data' => $tags, 'escape' => true), array('cache' => '+1 hour')))."\n";
+
+$paginator->options(array(
+    'update' => '#ajax',
+    'evalScripts' => true
+));
 
 echo $this->Html->div('paginationlinks', $paginator->numbers()."<br />\n".
         $paginator->prev('<< '.__('Previous', true).' ')."\n".
         $paginator->next(' '.__('Next', true).' >>')."<br />\n".
         $paginator->counter(array('format' => '<span>'.__('Page %page% of %pages%', true).'</span>'))."\n"
-        )."\n";
-
+        )."\n";?>
+<?php
 foreach ($data as $post) {
     echo "<div class=\"item clearfix\">\n";
 
@@ -40,7 +45,7 @@ else
                     $content .= ", \n";
                 $i++;
             }
-            echo $this->Html->tableCells(array(__('Actors:', true), $content))."\n";
+            echo $this->Html->tableCells(array(languageField($field).':', $content))."\n";
         }
         elseif ($field == 'genre') {
             $g = preg_split("/[\s]*[,][\s]*/", trim($post['Item'][$field]));
@@ -55,7 +60,7 @@ else
                     $content .= ", \n";
                 $i++;
             }
-            echo $this->Html->tableCells(array(__('Genre:', true), $content))."\n";
+            echo $this->Html->tableCells(array(languageField($field).':', $content))."\n";
         }
         elseif ($field == 'director') {
             $g = preg_split("/[\s]*[,][\s]*/", trim($post['Item'][$field]));
@@ -70,7 +75,7 @@ else
                     $content .= ", \n";
                 $i++;
             }
-            echo $this->Html->tableCells(array(__('Director:', true), $content))."\n";
+            echo $this->Html->tableCells(array(languageField($field).':', $content))."\n";
         }
         elseif ($field == 'webpage') {
             echo $this->Html->tableCells(array('',
@@ -80,12 +85,12 @@ else
                 ))."\n";
         }
         else
-            echo $this->Html->tableCells(array($field.':', trim($post['Item'][$field])))."\n";
+            echo $this->Html->tableCells(array(languageField($field).':', trim($post['Item'][$field])))."\n";
     }
     echo "</table>\n</div>\n";
     echo "</div>\n";
-}
-
+}?>
+<?php
 echo $this->Html->div('paginationlinks', $paginator->numbers()."<br />\n".
         $paginator->prev('<< '.__('Previous', true).' ')."\n".
         $paginator->next(' '.__('Next', true).' >>')."<br />\n".

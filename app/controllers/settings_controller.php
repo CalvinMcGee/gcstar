@@ -6,8 +6,8 @@
 class SettingsController extends AppController {
 
 	var $name = 'Settings';
-        var $components = array('Security', 'Session', 'Cookie');
-        var $helpers = array('Time');
+        var $components = array('Security', 'Session', 'Cookie', 'RequestHandler');
+        var $helpers = array('Time', 'Js');
 
         function beforeFilter() {
             $this->view = 'Theme';

@@ -28,14 +28,8 @@
         <div id="content" class="grid_12">
             <div class="grid_2 alpha">
                 <?php
-                    echo $this->Html->link(__('Sort by added', true), array(
-                        'controller' => 'items', 'action' => 'index',
-                        'sort:Item.added', 'direction:asc'
-                    ))."\n";
-                    echo $this->Html->link(__('Sort by year of publication', true), array(
-                        'controller' => 'items', 'action' => 'index',
-                        'sort:Item.date', 'direction:asc'
-                    ))."\n";
+                    echo $paginator->sort(__('Sort by added', true), 'Item.added')."\n";
+                    echo $paginator->sort(__('Sort by year of publication', true), 'Item.date')."\n";
                 ?>
             </div>
             <div id="ajax" class="grid_10 omega">
