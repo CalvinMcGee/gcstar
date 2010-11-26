@@ -27,8 +27,14 @@
         <div id="content" class="grid_12">
             <div class="grid_2 alpha">
                 <?php
-                    echo $this->Paginator->sort(__('Sort by added', true), 'added')."\n";
-                    echo $this->Paginator->sort(__('Sort by year of publication', true), 'year')."\n";
+                    echo $this->Html->link(__('Sort by added', true), array(
+                        'controller' => 'items', 'action' => 'index',
+                        'sort:Item.added', 'direction:asc'
+                    ))."\n";
+                    echo $this->Html->link(__('Sort by year of publication', true), array(
+                        'controller' => 'items', 'action' => 'index',
+                        'sort:Item.date', 'direction:asc'
+                    ))."\n";
                 ?>
             </div>
             <div class="grid_10 omega">

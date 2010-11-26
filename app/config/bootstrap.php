@@ -92,6 +92,87 @@ function storeConfig($name, $data = array(), $reload = false) {
     }
 }
 
+function languageField($tag) {
+    $_field = '';
+
+    switch ($tag) {
+        case 'webpage':
+            $_field = __('Webpage', true);
+            break;
+        case 'date':
+            $_field = __('Year', true);
+            break;
+        case 'genre':
+            $_field = __('Genre', true);
+            break;
+        case 'ratingpress':
+            $_field = __('Press rating', true);
+            break;
+        case 'country':
+            $_field = __('Country', true);
+            break;
+        case 'time':
+            $_field = __('Length', true);
+            break;
+        case 'original':
+            $_field = __('Original title', true);
+            break;
+        case 'director':
+            $_field = __('Director', true);
+            break;
+        case 'actors':
+            $_field = __('Actors', true);
+            break;
+        case 'age':
+            $_field = __('Age limit', true);
+            break;
+        case 'number':
+            $_field = __('Number of media', true);
+            break;
+        case 'rating':
+            $_field = __('Rating', true);
+            break;
+        case 'rank':
+            $_field = __('Rank', true);
+            break;
+        case 'identifier':
+            $_field = __('Identifier', true);
+            break;
+        case 'comment':
+            $_field = __('Comment', true);
+            break;
+        case 'audio':
+            $_field = __('Audio', true);
+            break;
+        case 'place':
+            $_field = __('Place', true);
+            break;
+        case 'added':
+            $_field = __('Added', true);
+            break;
+        case 'format':
+            $_field = __('Media format', true);
+            break;
+        case 'region':
+            $_field = __('Region', true);
+            break;
+        case 'serie':
+            $_field = __('Serie', true);
+            break;
+        case 'subt':
+            $_field = __('Subtitles', true);
+            break;
+        case 'subt':
+            $_field = __('Subtitles', true);
+            break;
+
+        default:
+            $_field = $tag;
+            break;
+    }
+    return $_field;
+}
+
     Configure::load('config');
 
     Configure::read('config');

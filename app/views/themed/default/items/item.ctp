@@ -35,7 +35,7 @@ foreach (Configure::read('Visual.fields_full') as $field) {
                 $content .= ", \n";
             $i++;
         }
-        echo $this->Html->tableCells(array(__('Genre:', true), $content))."\n";
+        echo $this->Html->tableCells(array(languageField($field).':', $content))."\n";
     }
     elseif ($field == 'director') {
         $g = preg_split("/[\s]*[,][\s]*/", trim($data[0]['Item'][$field]));
@@ -50,7 +50,7 @@ foreach (Configure::read('Visual.fields_full') as $field) {
                 $content .= ", \n";
             $i++;
         }
-        echo $this->Html->tableCells(array(__('Director:', true), $content))."\n";
+        echo $this->Html->tableCells(array(languageField($field).':', $content))."\n";
     }
     elseif ($field == 'webpage') {
         echo $this->Html->tableCells(array('',
@@ -60,7 +60,7 @@ foreach (Configure::read('Visual.fields_full') as $field) {
             ))."\n";
     }
     else
-        echo $this->Html->tableCells(array($field.':', trim($data[0]['Item'][$field])))."\n";
+        echo $this->Html->tableCells(array(languageField($field).':', trim($data[0]['Item'][$field])))."\n";
 }
 echo "</table>\n";
 echo "</div>\n";

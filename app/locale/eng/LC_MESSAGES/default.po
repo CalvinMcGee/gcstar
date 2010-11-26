@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2010-11-19 12:40+0100\n"
+"POT-Creation-Date: 2010-11-26 12:16+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Joachim Nyqvist <Joachim@JNyqvist.se>\n"
 "Language-Team: \n"
@@ -10,68 +10,251 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: English\n"
 
-#: /controllers/items_controller.php:44
+#: /config/bootstrap.php:100
+msgid "Webpage"
+msgstr ""
+
+#: /config/bootstrap.php:103
+msgid "Year"
+msgstr ""
+
+#: /config/bootstrap.php:106
+msgid "Genre"
+msgstr ""
+
+#: /config/bootstrap.php:109
+msgid "Press rating"
+msgstr ""
+
+#: /config/bootstrap.php:112
+msgid "Country"
+msgstr ""
+
+#: /config/bootstrap.php:115
+msgid "Length"
+msgstr ""
+
+#: /config/bootstrap.php:118
+msgid "Original title"
+msgstr ""
+
+#: /config/bootstrap.php:121
+msgid "Director"
+msgstr ""
+
+#: /config/bootstrap.php:124
+#: /views/themed/default/items/cloud.ctp:14
+msgid "Actors"
+msgstr ""
+
+#: /config/bootstrap.php:127
+msgid "Age limit"
+msgstr ""
+
+#: /config/bootstrap.php:130
+msgid "Number of media"
+msgstr ""
+
+#: /config/bootstrap.php:133
+msgid "Rating"
+msgstr ""
+
+#: /config/bootstrap.php:136
+msgid "Rank"
+msgstr ""
+
+#: /config/bootstrap.php:139
+msgid "Identifier"
+msgstr ""
+
+#: /config/bootstrap.php:142
+msgid "Comment"
+msgstr ""
+
+#: /config/bootstrap.php:145
+msgid "Audio"
+msgstr ""
+
+#: /config/bootstrap.php:148
+msgid "Place"
+msgstr ""
+
+#: /config/bootstrap.php:151
+msgid "Added"
+msgstr ""
+
+#: /config/bootstrap.php:154
+msgid "Media format"
+msgstr ""
+
+#: /config/bootstrap.php:157
+msgid "Region"
+msgstr ""
+
+#: /config/bootstrap.php:160
+msgid "Serie"
+msgstr ""
+
+#: /config/bootstrap.php:163;166
+msgid "Subtitles"
+msgstr ""
+
+#: /controllers/install_controller.php:19
+msgid "Installation"
+msgstr ""
+
+#: /controllers/items_controller.php:59
 msgid "Index"
 msgstr ""
 
-#: /plugins/datasources/models/datasources/array_source.php:99
-msgid "No records found in model."
+#: /controllers/settings_controller.php:40
+msgid "Configuration saved"
 msgstr ""
 
-#: /plugins/datasources/models/datasources/xmlrpc_source.php:138
-msgid "Transport error - could not open socket"
+#: /controllers/settings_controller.php:43
+msgid "Could not save configuration"
 msgstr ""
 
-#: /plugins/datasources/models/datasources/xmlrpc_source.php:141
-msgid "Transport error - HTTP status code was not 200"
+#: /controllers/settings_controller.php:195
+msgid "Database has been updated"
 msgstr ""
 
-#: /plugins/datasources/models/datasources/xmlrpc_source.php:186
-msgid "Parse error. Not well formed"
+#: /views/themed/default/install/index.ctp:8
+msgid "Your tmp directory is writable."
 msgstr ""
 
-#: /plugins/wizard/controllers/components/wizard.php:208
-msgid "Process Callback not found. Please create Controller::%s"
+#: /views/themed/default/install/index.ctp:11
+msgid "Your tmp directory is NOT writable."
 msgstr ""
 
-#: /plugins/wizard/controllers/components/wizard.php:240
-msgid "Step validation: %s is not a valid step."
+#: /views/themed/default/install/index.ctp:16
+msgid "Your imagecache directory is writable."
 msgstr ""
 
-#: /views/themed/default/items/index.ctp:25
-msgid "Actors:"
+#: /views/themed/default/install/index.ctp:19
+msgid "Your imagecache directory is NOT writable."
 msgstr ""
 
-#: /views/themed/default/items/index.ctp:40
-msgid "Genre:"
+#: /views/themed/default/install/index.ctp:24
+msgid "Your config directory is writable."
 msgstr ""
 
-#: /views/themed/default/items/index.ctp:55
-msgid "Director:"
+#: /views/themed/default/install/index.ctp:27
+msgid "Your config directory is NOT writable."
 msgstr ""
 
-#: /views/themed/default/items/index.ctp:65
+#: /views/themed/default/install/index.ctp:32
+msgid "PHP version %s > 5"
+msgstr ""
+
+#: /views/themed/default/install/index.ctp:35
+msgid "PHP version %s < 5"
+msgstr ""
+
+#: /views/themed/default/install/index.ctp:41
+msgid "Installation cannot continue as minimum requirements are not met."
+msgstr ""
+
+#: /views/themed/default/items/cloud.ctp:4
+msgid "Genres"
+msgstr ""
+
+#: /views/themed/default/items/cloud.ctp:9
+msgid "Directors"
+msgstr ""
+
+#: /views/themed/default/items/cloud.ctp:19
+msgid "Countries"
+msgstr ""
+
+#: /views/themed/default/items/cloud.ctp:24
+msgid "Years of publication"
+msgstr ""
+
+#: /views/themed/default/items/index.ctp:6;90
 msgid "Previous"
 msgstr ""
 
-#: /views/themed/default/items/index.ctp:66
+#: /views/themed/default/items/index.ctp:7;91
 msgid "Next"
 msgstr ""
 
-#: /views/themed/default/items/index.ctp:67
+#: /views/themed/default/items/index.ctp:8;92
 msgid "Page %page% of %pages%"
 msgstr ""
 
-#: /views/themed/default/users/admin.ctp:3
+#: /views/themed/default/items/index.ctp:77
+#: /views/themed/default/items/item.ctp:57
+msgid "Link"
+msgstr ""
+
+#: /views/themed/default/items/item.ctp:23
+msgid "Actors:"
+msgstr ""
+
+#: /views/themed/default/items/rss/feed.ctp:6
+#: /views/themed/default/layouts/default.ctp:11
+#: /views/themed/default/layouts/items.ctp:11
+msgid "Most Recent Items"
+msgstr ""
+
+#: /views/themed/default/items/rss/feed.ctp:8
+msgid "Most recent items."
+msgstr ""
+
+#: /views/themed/default/layouts/default.ctp:30
+#: /views/themed/default/layouts/items.ctp:30
+msgid "Sort by added"
+msgstr ""
+
+#: /views/themed/default/layouts/default.ctp:34
+#: /views/themed/default/layouts/items.ctp:31
+msgid "Sort by year of publication"
+msgstr ""
+
+#: /views/themed/default/settings/admin.ctp:6
+msgid "Username"
+msgstr ""
+
+#: /views/themed/default/settings/admin.ctp:11
+#: /views/themed/default/settings/index.ctp:47
+msgid "Save"
+msgstr ""
+
+#: /views/themed/default/settings/index.ctp:3
+msgid "Update database"
+msgstr ""
+
+#: /views/themed/default/settings/index.ctp:10
+msgid "This field is required"
+msgstr ""
+
+#: /views/themed/default/settings/index.ctp:13
+msgid "The page title"
+msgstr ""
+
+#: /views/themed/default/settings/index.ctp:16
+msgid "Theme"
+msgstr ""
+
+#: /views/themed/default/settings/index.ctp:20
 msgid "Language"
 msgstr ""
 
-#: /views/themed/default/users/admin.ctp:4
-msgid "Continue"
+#: /views/themed/default/settings/index.ctp:26;34;42
+msgid "Must be a valid number"
 msgstr ""
 
-#: /views/themed/default/users/admin.ctp:5
-msgid "Cancel"
+#: /views/themed/default/settings/index.ctp:29
+msgid "Number of items per page"
+msgstr ""
+
+#: /views/themed/default/settings/index.ctp:37
+msgid "Minimum font size in tag cloud"
+msgstr ""
+
+#: /views/themed/default/settings/index.ctp:45
+msgid "Maximum font size in tag cloud"
 msgstr ""
 
 #: /webroot/test.php:88

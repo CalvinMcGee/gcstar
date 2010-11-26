@@ -23,14 +23,30 @@ foreach ($data as $post) {
     $bodyText = $text->stripLinks($bodyText);
     $bodyText = Sanitize::stripAll($bodyText);
     $bodyText = $text->truncate($bodyText, 400);
-//    $bodyText = $html->resize('webroot/files/'.$post['Item']['image'], 120, 120, true, null, false).$bodyText;
+
+    App::import('Image');
+
+    if (file_exists(WWW_ROOT.'/files/'.$post['Item']['image']) && $post['Item']['image'] != '')
+        $imageTag = $image->resize('webroot/files/'.$post['Item']['image'], 120, 120, true, null, false);
+    else
+        $imageTag = $image->resize('views/themed/'.Configure::read('Visual.theme').'/webroot/img/nocover.gif', 120, 120, true, null, false);
+
+    $descriptionText = '';
+
+    foreach (Configure::read('Visual.fields_list') as $tag) {
+        if (trim($post['Item'][$tag])!='') {
+            $descriptionText .= languageField($field).': '.$post['Item'][$field]."<br />\n";
+        }
+    }
+
+    $description = $imageTag."<br /><br />\n".$descriptionText."<br />\n".$bodyText;
 
     echo $this->Rss->item(array(), array(
         'title' => $post['Item']['title'],
         'link' => $postLink,
         'guid' => array('url' => $postLink, 'isPermaLink' => 'true'),
-        'description' =>  $bodyText,
-        'dc:creator' => 'Joachim',
+        'description' =>  $description,
+        'dc:creator' => Configure::read('Visual.title'),
         'pubDate' => $postTime))."\n";
 }
 ?>
