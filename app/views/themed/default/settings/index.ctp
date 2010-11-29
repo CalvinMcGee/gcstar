@@ -1,12 +1,9 @@
-<div id="busy-indicator" style="display: none;">
-<?php echo $this->Html->image('ajax.gif');?>
-</div>
 <h2><?php echo $title; ?></h2>
 <?php
 echo $this->Js->link(__('Update database', true), array('action' => 'xml'), array(
     'update' => '#ajax',
-    'before' => $this->Js->get('#busy-indicator')->effect('fadeIn', array('buffer' => false)),
-    'success' => $this->Js->get('#busy-indicator')->effect('fadeOut', array('buffer' => false)),
+    'before' => $this->Js->get('#overlay')->effect('fadeIn', array('buffer' => false)),
+    'success' => $this->Js->get('#overlay')->effect('fadeOut', array('buffer' => false)),
     'complete' => $this->Js->redirect(array('action' => 'index'))));
 foreach ($languages as $language)
     $options[$language] = languageCodes($language);

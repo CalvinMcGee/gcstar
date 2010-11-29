@@ -17,7 +17,6 @@ class ItemsController extends AppController {
         );
 
         function index($category = null, $name = null) {
-            $this->layout = 'items';
 
             switch ($category) {
 

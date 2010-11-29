@@ -16,10 +16,10 @@ echo $this->Html->div('paginationlinks', $paginator->numbers()."<br />\n".
 foreach ($data as $post) {
     echo "<div class=\"item clearfix\">\n";
 
-    echo "<div class=\"grid_3 omega\">\n";
+    echo "<div class=\"grid_2 omega\">\n";
 
 if (file_exists(WWW_ROOT.'/files/'.$post['Item']['image']) && $post['Item']['image'] != '')
-    echo $this->Image->resize('webroot/files/'.trim($post['Item']['image']),220, 220, true, null, false);
+    echo $this->Image->resize('webroot/files/'.trim($post['Item']['image']), 140, 250, true, null, false);
 else
     echo $this->Image->resize('views/themed/'.Configure::read('Visual.theme').'/webroot/img/nocover.gif', 220, 220, true, null, false);
 
@@ -33,7 +33,7 @@ else
     echo "<table>\n";
     foreach (Configure::read('Visual.fields_list') as $field) {
         if ($field == 'actors') {
-            $g = preg_split("/[\s]*[,][\s]*/", trim($data[0]['Item'][$field]));
+            $g = preg_split("/[\s]*[,][\s]*/", trim($post['Item'][$field]));
             $i = 0;
             $content = '';
             foreach ($g as $actor) {
@@ -75,7 +75,8 @@ else
                     $content .= ", \n";
                 $i++;
             }
-            echo $this->Html->tableCells(array(languageField($field).':', $content))."\n";
+            if ($content != '')
+                echo $this->Html->tableCells(array(languageField($field).':', $content))."\n";
         }
         elseif ($field == 'webpage') {
             echo $this->Html->tableCells(array('',
